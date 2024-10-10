@@ -139,10 +139,10 @@
     name: pbs
     state: stopped
 
-#- name: start postgresql # JRP
-#  service:               # JRP 
-#    name: postgresql     # JRP
-#    state: started       # JRP
+- name: start postgresql 
+  service: 
+    name: postgresql
+    state: started
 
 - name: start pbs-server 
   service: 
@@ -150,4 +150,4 @@
     state: started
 
 - name: check pbs connection
-  command: /opt/pbs/bin/qstat # JRP
+  command: qstat

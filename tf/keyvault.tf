@@ -21,7 +21,8 @@ resource "azurerm_key_vault" "azhop" {
   network_acls {
     default_action             = local.locked_down_network ? "Deny" : "Allow"
     bypass                     = "AzureServices"
-    ip_rules                   = local.grant_access_from
+    #ip_rules                   = local.grant_access_from # JRP
+    ip_rules                   = concat(local.grant_access_from, ["135.225.129.220"]) # JRP
     virtual_network_subnet_ids = [local.create_admin_subnet ? azurerm_subnet.admin[0].id : data.azurerm_subnet.admin[0].id]
   }
 }
